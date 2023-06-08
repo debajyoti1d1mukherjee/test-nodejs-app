@@ -23,11 +23,16 @@ pipeline {
                 }
       }
         steps { 
-           sh 'echo "testing application..."'
+           sh 'echo "testing application for dev,qa,master,stage........"'
         }
       }
 
          stage("Deploy application") { 
+           when {
+        not  {
+                    branch "master"
+                }
+      }
          steps { 
            sh 'echo "deploying application..."'
          }
